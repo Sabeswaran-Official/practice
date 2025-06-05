@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center fs-3 m-2 text-light">Customer Add Page</h1>
+
+<div class="container">
+    <a href="/orders/all/customers/">
+        <button class="btn btn-secondary float-end">Back</button>
+    </a>
+    <br>
+</div>
+
+<div class="container position-relative" style="height: 50vh;">
+    <form action="" method="POST" class="text-light position-absolute top-50 start-50 translate-middle" style="width: 40%;" >
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label lass="form-label">Customer Name</label>
+            {{customer_form.customer_name}}
+        </div>
+
+        <div class="mb-3">
+            <label lass="form-label">Customer Since</label>
+            {{customer_form.customer_since}}
+        </div>
+        
+        <input type="submit" value="Add customer" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock %}

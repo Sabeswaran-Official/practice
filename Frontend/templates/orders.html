@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center text-light fs-3 m-2">Order List Page</h1>
+
+{% if request.user.role == 0 %}
+
+<div class="container">
+    <a href="/orders/add/orders/">
+        <button class="btn btn-primary float-end m-2">+ Add New Order</button>
+    </a>
+</div>
+
+{% endif %}
+
+<div class="container">
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Order Number</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Gst Amount</th>
+                <th>Bill Amount</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in all_orders %}
+
+            <tr>
+                <td>{{order.customer_reference}}</td>
+                <td>{{order.product_reference}}</td>
+                <td>{{order.order_number}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.gst_amount}}</td>
+                <td>{{order.bill_amount}}</td>
+                <td class="text-center">
+                    <a href="{% url 'order_update' order.id %}">
+                        <button class="btn btn-info">Update</button>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'order_delete' order.id %}">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

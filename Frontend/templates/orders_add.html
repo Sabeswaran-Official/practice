@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center  fs-3 m-2 text-light">Orders Add Page</h1>
+
+<div class="container">
+    <a href="/orders/orders/">
+        <button class="btn btn-secondary float-end">Back</button>
+    </a>
+    <br>
+</div>
+
+<div class="container position-relative" style="height: 70vh;">
+    <form action="" method="POST" class="text-light position-absolute top-50 start-50 translate-middle" style="width: 40%;" >
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label lass="form-label">Customer</label>
+            {{order_form.customer_reference}}
+        </div>
+
+        <div class="mb-3">
+            <label lass="form-label">Product</label>
+            {{order_form.product_reference}}
+        </div>
+
+        <div class="mb-3">
+            <label lass="form-label">Order Number</label>
+            {{order_form.order_number}}
+        </div>
+
+        <div class="mb-3">
+            <label lass="form-label">Order Date</label>
+            {{order_form.order_date}}
+        </div>
+
+        <div class="mb-3">
+            <label lass="form-label">Order Quantity</label>
+            {{order_form.quantity}}
+        </div>
+        
+        <input type="submit" value="Add Order" class="btn btn-primary">
+    </form>
+</div>
+
+{% endblock %}

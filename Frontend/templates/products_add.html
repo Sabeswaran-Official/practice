@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-center fs-3 m-2 text-light">Product Add Page</h1>
+
+<div class="container">
+    <a href="/inventory/products/">
+        <button class="btn btn-secondary float-end">Back</button>
+    </a>
+</div>
+
+<div class="container">
+    <form action="" method="POST" class="text-light" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{product_form}}
+        <br><br>
+        <input type="submit" value="Add Product" class="btn btn-primary">
+    </form>
+</div>
+
+
+
+{% endblock %}

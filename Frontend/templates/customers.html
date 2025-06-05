@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<h1 class="text-center text-light fs-3 m-2">Customer List Page</h1>
+
+<div class="container">
+    <a href="/orders/add/customers/">
+        <button class="btn btn-primary float-end m-2">+ Add Customer</button>
+    </a>
+</div>
+
+
+<div class="container">
+
+    <table class="table table-dark">
+
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Customer Since</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for customer in all_customers %}
+    
+                <tr>
+                    <td>{{customer.customer_name}}</td>
+                    <td>{{customer.customer_since}}</td>
+                    <td class="text-center">
+                        <a href="{% url 'customer_update' customer.id %}">
+                            <button class="btn btn-info">Update</button>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{% url 'customer_delete' customer.id %}">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+    
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1 class="text-color">Main text</h1>
+
+</div>
+
+
+
+
+{% endblock %}
